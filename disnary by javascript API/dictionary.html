@@ -1,0 +1,88 @@
+<html>
+<head><title>dictinory with full meaning</title>
+<style>
+body{
+background:linear-gradient(white ,silver)
+}
+h2{
+text-align:center;
+}
+
+#head{
+border:2px solid black;
+width:50%;
+height:300px;
+margin-left:25%;
+padding:30px;
+font-weight:bold;
+font-size:30px;
+box-shadow:10px 10px 10px;
+background-color:RGB(224,224,224);
+}
+
+input{
+padding:6px;
+width:35%;
+
+}
+
+#meaning{
+border:2px solid black;
+box-shadow:10px 10px 5px;
+background-color:white;
+}
+
+button{
+color:white;
+background-color:red;
+padding:10px;
+width:30%;
+
+}
+</style>
+</head>
+<body>
+
+<form>
+<div id="head">
+<h2>Dictionary With Full Meaning</h2>
+<label>Enter the word</title>
+<input type="text" id="word"><br><br><br>
+<button value="submit" id="submit">submit</button>
+</div><br><br><br>
+</form>
+<div id="meaning">
+<p>the meaning is: <span id="definition"></span></p>
+</div>
+
+<script>
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7c4c9dde72mshe7fea86ac49bf76p19f1ffjsn15387687ea5a',
+		'X-RapidAPI-Host': 'dictionary-by-api-ninjas.p.rapidapi.com'
+	}
+};
+
+const di=(word)=>{
+fetch('https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word='+word,options)
+.then((response)=>response.json())
+.then((data)=>{
+console.log(data)
+
+definition.innerHTML=data.definition
+})}
+
+
+
+
+submit.addEventListener("click",(e)=>{
+e.preventDefault()
+di(word.value)
+
+}
+)
+di("bright")
+</script>
+</body>
+</html>
